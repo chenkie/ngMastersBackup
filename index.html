@@ -1,0 +1,66 @@
+
+<!-- okay. so the problem that i have econcountered with the prevailing json structure is htat whenever i enter a search term, for example, hemingway, the hemingway quote does not show up. what shows up is the 'The Others' card.
+
+
+So, in order to achieve that functionality, your each quote will have to be a json object with properties like quote, name of the person who expressed that thought, etc. sthg like as follows. using this way, you will also be able to incorporate crud capability in the manner that you already know from Ryan's instructions.
+
+{
+	
+	"thought": "",
+	"name": ["The Others", "Hemingway"]
+}
+
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>ngMasters</title>
+	<link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css" media="all" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	
+</head>
+
+<body ng-app="ngClassifieds">
+
+
+	<ui-view></ui-view>
+
+
+
+
+	<script src="node_modules/angular/angular.js"></script>
+
+	<script src="node_modules/angular-animate/angular-animate.js"></script>
+	<script src="node_modules/angular-aria/angular-aria.js"></script>
+	<script src="node_modules/angular-material/angular-material.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+
+	<script src="scripts/app.js"></script>
+	<script src="components/classifieds.ctr.js"></script>
+	<script src="components/classifieds.fac.js"></script>
+	<script src="components/auth/auth.ctr.js"></script>
+	<script src="components/auth/auth.fac.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="scripts/scrolltotop.js"></script> 
+<!--<script type="text/javascript" src="https://arrow.scrolltotop.com/arrow88.js"></script>
+	<noscript>Not seeing a <a href="https://www.scrolltotop.com/">Scroll to Top Button</a>? Go to our FAQ page for more info.</noscript>
+
+-->
+
+		<!-- Firebase -->
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+
+</body>
+
+</html>

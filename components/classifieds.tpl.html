@@ -1,0 +1,86 @@
+
+
+
+
+
+<md-toolbar>
+		<div class="md-toolbar-tools">
+			<a ui-sref="masters"><p ng-click="showAdvanced($event)"><md-icon class="mdi mdi-human"></md-icon>ngMasters</p></a>
+
+
+			 
+
+			<span hide-gt-xs flex></span>
+
+			<md-button ng-click="showFilters = true" ng-show="!showFilters">
+				<md-icon class="mdi mdi-magnify"></md-icon>
+				Filters
+			</md-button>
+
+			<md-button ng-click="showFilters = false" ng-show="showFilters">
+				<md-icon class="mdi mdi-magnify"></md-icon>
+				Hide Filters
+			</md-button>
+
+			<!-- <span hide-gt-xs flex></span>
+
+			<div layout="row" layout-align="center center" hide-xs> 
+					<p>  {{ name }} </p>
+			</div>   -->
+
+			
+
+		</div>
+					
+</md-toolbar>
+
+<!-- Filters -->
+
+	<div class="filters" layout-xs= "column" layout-gt-xs="row" layout-align="center" ng-show="showFilters">
+
+		<md-input-container>
+			<label>Enter Search Term</label>
+			<input type="text" ng-model="classifiedsFilter">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Select a Master</label>
+			<md-select ng-model="name">
+				<md-option ng-repeat="name in names | orderBy: 'toString()'" value="{{ name }}">  
+					{{ name }} 
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container>
+			<md-button class="md-warn" ng-click="classifiedsFilter = ''; name = ''">Clear</md-button>
+		</md-input-container>
+
+	</div>
+
+
+	<md-content class="md-padding" layout="row" layout-align="center" layout-wrap>
+
+		<md-card ng-repeat="classified in classifieds | filter: classifiedsFilter | filter:{'name':name}" flex-xs="100" flex-gt-sm="70">
+
+			<md-card-content>
+				<div class="classified-info">
+
+					<h2 class="md-display-2">{{ classified.name }}</h2>
+
+					<ul> 
+						<li ng-repeat="thought in classified.thoughts track by $index">{{ thought }}</li>
+						
+					</ul>  
+
+				</div>
+
+
+
+			</md-card-content>
+
+
+		</md-card>
+
+
+	</md-content>
