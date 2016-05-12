@@ -36,7 +36,7 @@ angular.module('ngClassifieds', ['ngMaterial', 'ui.router', 'firebase'])
 	    $state.go("auth");
 	  }
 	});
-	}]);
+	}])
 
 
 
@@ -55,16 +55,8 @@ angular.module('ngClassifieds', ['ngMaterial', 'ui.router', 'firebase'])
 	        .state('auth', {
 	          url: '/auth',
 	          templateUrl: 'components/auth/auth.tpl.html',
-	          controller: 'authCtrl',
-	          resolve: {
-			      // controller will not be loaded until $waitForAuth resolves
-			      // Auth refers to our $firebaseAuth wrapper in the example above
-			      "currentAuth": ["Auth", function(Auth) {
-			        // $waitForAuth returns a promise so the resolve waits for it to complete
-			        return Auth.$waitForAuth();
-			      }]
-		    	}
-	        })
+	          controller: 'authCtrl'
+	        });
 
 		$stateProvider
 			.state('masters', {
@@ -74,10 +66,10 @@ angular.module('ngClassifieds', ['ngMaterial', 'ui.router', 'firebase'])
 				resolve: {
 			      // controller will not be loaded until $requireAuth resolves
 			      // Auth refers to our $firebaseAuth wrapper in the example above
-			      "currentAuth": ["Auth", function(Auth) {
+			      "currentAuth": ["auth", function(auth) {
 			        // $requireAuth returns a promise so the resolve waits for it to complete
 			        // If the promise is rejected, it will throw a $stateChangeError (see above)
-			        return Auth.$requireAuth();
+			        return auth.ref.$requireAuth();
 			      }]
 			    }
 
